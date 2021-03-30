@@ -12,11 +12,6 @@ package flashlaundry;
 public class Disukai {
     private String idJasa, idPengguna;
 
-    public Disukai(String idJasa, String idPengguna) {
-        this.idJasa = idJasa;
-        this.idPengguna = idPengguna;
-    }
-
     public String getIdJasa() {
         return idJasa;
     }
@@ -30,6 +25,11 @@ public class Disukai {
     }
 
     public void setIdPengguna(String idPengguna) {
+        this.idPengguna = idPengguna;
+    }
+
+    public Disukai(String idJasa, String idPengguna) {
+        this.idJasa = idJasa;
         this.idPengguna = idPengguna;
     }
 }
