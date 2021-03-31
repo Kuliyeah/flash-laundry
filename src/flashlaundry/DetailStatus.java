@@ -8,6 +8,7 @@ import java.util.Date;
 public class DetailStatus {
     private String idDetailStatus, idTransaksi;
     private Date tanggalStatus;
+    private enum status {Jemput, Cuci, Jemur, Setrika, Dikemas, Dikirim}
 
     public String getIdDetailStatus() {
         return idDetailStatus;
@@ -32,7 +33,6 @@ public class DetailStatus {
     public void setTanggalStatus(Date tanggalStatus) {
         this.tanggalStatus = tanggalStatus;
     }
-    private enum status {Jemput, Cuci, Jemur, Setrika, Dikemas, Dikirim}
 
     public DetailStatus(String idDetailStatus, String idTransaksi, Date tanggalStatus) {
         this.idDetailStatus = idDetailStatus;

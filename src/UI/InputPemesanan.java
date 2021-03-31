@@ -44,71 +44,71 @@ public class InputPemesanan extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 700));
-        setSize(new java.awt.Dimension(1200, 700));
+        setPreferredSize(new java.awt.Dimension(506, 500));
+        setSize(new java.awt.Dimension(506, 500));
         getContentPane().setLayout(null);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         label1.setText("PEMESANAN JASA");
         getContentPane().add(label1);
-        label1.setBounds(29, 21, 320, 52);
+        label1.setBounds(0, 50, 500, 52);
 
         label2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label2.setText("Nama");
         getContentPane().add(label2);
-        label2.setBounds(29, 105, 60, 24);
+        label2.setBounds(90, 130, 60, 24);
         getContentPane().add(textField1);
-        textField1.setBounds(99, 105, 224, 27);
+        textField1.setBounds(160, 130, 224, 27);
         getContentPane().add(textField2);
-        textField2.setBounds(99, 142, 224, 27);
+        textField2.setBounds(160, 170, 224, 27);
 
         label3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label3.setText("No Telp");
         getContentPane().add(label3);
-        label3.setBounds(29, 142, 60, 24);
+        label3.setBounds(90, 170, 60, 24);
         getContentPane().add(textField3);
-        textField3.setBounds(99, 179, 224, 56);
+        textField3.setBounds(160, 210, 224, 56);
 
         label4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label4.setText("Alamat");
         getContentPane().add(label4);
-        label4.setBounds(29, 179, 60, 24);
+        label4.setBounds(90, 210, 60, 24);
 
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButton1.setText("Paket1");
         getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(39, 302, 81, 25);
+        jRadioButton1.setBounds(90, 330, 81, 25);
 
         label5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         label5.setText("Daftar Pilihan Paket");
         getContentPane().add(label5);
-        label5.setBounds(29, 263, 294, 29);
+        label5.setBounds(90, 290, 294, 29);
 
         jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButton2.setText("Paket1");
         getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(39, 330, 81, 25);
+        jRadioButton2.setBounds(90, 360, 81, 25);
 
         jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButton3.setText("Paket1");
         getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(120, 330, 83, 25);
+        jRadioButton3.setBounds(170, 360, 83, 25);
 
         jRadioButton4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButton4.setText("Paket1");
         getContentPane().add(jRadioButton4);
-        jRadioButton4.setBounds(120, 302, 83, 25);
+        jRadioButton4.setBounds(170, 330, 83, 25);
 
         jRadioButton5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButton5.setText("Paket1");
         getContentPane().add(jRadioButton5);
-        jRadioButton5.setBounds(203, 330, 83, 25);
+        jRadioButton5.setBounds(260, 360, 83, 25);
 
         jRadioButton6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jRadioButton6.setText("Paket1");
         getContentPane().add(jRadioButton6);
-        jRadioButton6.setBounds(203, 302, 83, 25);
+        jRadioButton6.setBounds(260, 330, 83, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
