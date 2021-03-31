@@ -29,62 +29,101 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.black);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Lato", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lato", 1, 36)); // NOI18N
         jLabel1.setText("Dashboard");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(63, 41, 174, 44);
+        jLabel1.setBounds(60, 50, 200, 44);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\download.png")); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 170, 225, 177);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\laundry+machine+wash+washing+icon-1320183749358577657.png")); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(430, 170, 169, 177);
+        jLabel2.setBounds(120, 190, 225, 177);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Pengguna");
+        jLabel4.setText("Pelanggan");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(60, 370, 225, 34);
+        jLabel4.setBounds(120, 390, 225, 34);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Pembayaran");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(1050, 380, 132, 34);
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Master"));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\png-clipart-computer-icons-form-template-document-order-compare-icon-template-angle.png")); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(1050, 180, 175, 177);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\laundry+machine+wash+washing+icon-1320183749358577657.png")); // NOI18N
+        jLayeredPane1.add(jLabel3);
+        jLabel3.setBounds(360, 60, 169, 177);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Jasa");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(430, 370, 169, 34);
+        jLayeredPane1.add(jLabel6);
+        jLabel6.setBounds(360, 260, 169, 34);
 
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\png-clipart-computer-icons-form-template-document-order-compare-icon-template-angle.png")); // NOI18N
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(760, 180, 180, 177);
+        jLayeredPane1.add(jLabel8);
+        jLabel8.setBounds(640, 60, 180, 177);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Pemesanan");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(760, 380, 132, 34);
+        jLayeredPane1.add(jLabel9);
+        jLabel9.setBounds(640, 260, 132, 34);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\png-clipart-computer-icons-form-template-document-order-compare-icon-template-angle.png")); // NOI18N
+        jLayeredPane1.add(jLabel7);
+        jLabel7.setBounds(900, 60, 175, 177);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Pembayaran");
+        jLayeredPane1.add(jLabel5);
+        jLabel5.setBounds(900, 260, 132, 34);
+
+        getContentPane().add(jLayeredPane1);
+        jLayeredPane1.setBounds(70, 130, 1130, 340);
+
+        jMenu1.setText("Login");
+        jMenuBar1.add(jMenu1);
+
+        jMenu5.setText("Pengguna");
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Jasa");
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Pemesanan");
+        jMenuBar1.add(jMenu7);
+
+        jMenu8.setText("Bayar");
+        jMenuBar1.add(jMenu8);
+
+        jMenu3.setText("Logout");
+        jMenuBar1.add(jMenu3);
+
+        jMenu2.setText("Exit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,5 +173,14 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
