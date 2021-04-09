@@ -1,6 +1,5 @@
-import flashlaundry.Jasa;
-import flashlaundry.Pengguna;
-import flashlaundry.Transaksi;
+package flashlaundry;
+
 import java.util.Scanner;
 
 public class DriverFlashLaundry {
