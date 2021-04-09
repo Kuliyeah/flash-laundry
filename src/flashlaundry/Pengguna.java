@@ -3,36 +3,36 @@ package flashlaundry;
  * @author dzakwandh
  */
 public class Pengguna {
-    private String idPengguna;
-    private String namaPengguna;
+    private int idPengguna;
+    private String username;
     private String noHP;
     private String alamatPengguna;
     private String email;
     private String kataSandi;
 
-    public Pengguna(String idPengguna, String namaPengguna, String noHP, String alamatPengguna, String email, String kataSandi) {
+    public Pengguna(int idPengguna, String username, String noHP, String alamatPengguna, String email, String kataSandi) {
         this.idPengguna = idPengguna;
-        this.namaPengguna = namaPengguna;
+        this.username = username;
         this.noHP = noHP;
         this.alamatPengguna = alamatPengguna;
         this.email = email;
         this.kataSandi = kataSandi;
     }
 
-    public String getIdPengguna() {
+    public int getIdPengguna() {
         return idPengguna;
     }
 
-    public void setIdPengguna(String idPengguna) {
+    public void setIdPengguna(int idPengguna) {
         this.idPengguna = idPengguna;
     }
 
-    public String getNamaPengguna() {
-        return namaPengguna;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNamaPengguna(String namaPengguna) {
-        this.namaPengguna = namaPengguna;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getNoHP() {
@@ -66,5 +66,4 @@ public class Pengguna {
     public void setKataSandi(String kataSandi) {
         this.kataSandi = kataSandi;
     }
-    
 }

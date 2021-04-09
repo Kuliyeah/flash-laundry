@@ -3,10 +3,10 @@ package flashlaundry;
  * @author LENOVO
  */
 public class Transaksi {
-    private String idTransaksi, idJasa, idDetailStatus, deskripsiCucian, beratCucian, ongkir, bayar;
-    private int totalBayar;
+    private String deskripsiCucian;
+    private int idTransaksi, idJasa, idDetailStatus, totalBayar, beratCucian, ongkir, bayar;
 
-    public Transaksi(String idTransaksi, String idJasa, String idDetailStatus, String deskripsiCucian, String beratCucian, String ongkir, String bayar, int totalBayar) {
+    public Transaksi(int idTransaksi, int idJasa, int idDetailStatus, String deskripsiCucian, int beratCucian, int ongkir, int bayar, int totalBayar) {
         this.idTransaksi = idTransaksi;
         this.idJasa = idJasa;
         this.idDetailStatus = idDetailStatus;
@@ -17,15 +17,15 @@ public class Transaksi {
         this.totalBayar = totalBayar;
     }
 
-    public String getIdTransaksi() {
+    public int getIdTransaksi() {
         return idTransaksi;
     }
 
-    public String getIdJasa() {
+    public int getIdJasa() {
         return idJasa;
     }
 
-    public String getIdDetailStatus() {
+    public int getIdDetailStatus() {
         return idDetailStatus;
     }
 
@@ -33,15 +33,15 @@ public class Transaksi {
         return deskripsiCucian;
     }
 
-    public String getBeratCucian() {
+    public int getBeratCucian() {
         return beratCucian;
     }
 
-    public String getOngkir() {
+    public int getOngkir() {
         return ongkir;
     }
 
-    public String getBayar() {
+    public int getBayar() {
         return bayar;
     }
 
@@ -49,15 +49,15 @@ public class Transaksi {
         return totalBayar;
     }
 
-    public void setIdTransaksi(String idTransaksi) {
+    public void setIdTransaksi(int idTransaksi) {
         this.idTransaksi = idTransaksi;
     }
 
-    public void setIdJasa(String idJasa) {
+    public void setIdJasa(int idJasa) {
         this.idJasa = idJasa;
     }
 
-    public void setIdDetailStatus(String idDetailStatus) {
+    public void setIdDetailStatus(int idDetailStatus) {
         this.idDetailStatus = idDetailStatus;
     }
 
@@ -65,15 +65,15 @@ public class Transaksi {
         this.deskripsiCucian = deskripsiCucian;
     }
 
-    public void setBeratCucian(String beratCucian) {
+    public void setBeratCucian(int beratCucian) {
         this.beratCucian = beratCucian;
     }
 
-    public void setOngkir(String ongkir) {
+    public void setOngkir(int ongkir) {
         this.ongkir = ongkir;
     }
 
-    public void setBayar(String bayar) {
+    public void setBayar(int bayar) {
         this.bayar = bayar;
     }
 

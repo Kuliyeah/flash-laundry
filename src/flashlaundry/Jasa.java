@@ -8,10 +8,10 @@ package flashlaundry;
  * @author gilan
  */
 public class Jasa {
-    private String idJasa, idToko, namaJasa, deskripsiJasa;
-    private int harga, diskon, totalDisukai;
+    private String namaJasa, deskripsiJasa;
+    private int idJasa, idToko, harga, diskon, totalDisukai;
 
-    public Jasa(String idJasa, String idToko, String namaJasa, String deskripsiJasa, int harga, int diskon) {
+    public Jasa(int idJasa, int idToko, String namaJasa, String deskripsiJasa, int harga, int diskon) {
         this.idJasa = idJasa;
         this.idToko = idToko;
         this.namaJasa = namaJasa;
@@ -20,19 +20,19 @@ public class Jasa {
         this.diskon = diskon;
     }
 
-    public String getIdJasa() {
+    public int getIdJasa() {
         return idJasa;
     }
 
-    public void setIdJasa(String idJasa) {
+    public void setIdJasa(int idJasa) {
         this.idJasa = idJasa;
     }
 
-    public String getIdToko() {
+    public int getIdToko() {
         return idToko;
     }
 
-    public void setIdToko(String idToko) {
+    public void setIdToko(int idToko) {
         this.idToko = idToko;
     }
 
