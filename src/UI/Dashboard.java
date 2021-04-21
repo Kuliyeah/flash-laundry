@@ -58,7 +58,7 @@ public class Dashboard extends javax.swing.JFrame {
                     "' and kataSandi ='"+textPassword.getText()+"'";
             ResultSet rs = conn.getData(sql);
             while (rs.next()){
-                namaPengguna = rs.getString(2);
+                namaPengguna = rs.getString(1);
             }
             if(namaPengguna.equals(""))
             {
@@ -96,11 +96,11 @@ public class Dashboard extends javax.swing.JFrame {
         dialogLogin = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        textPassword = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         textUsername = new javax.swing.JTextField();
         btnBatal = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
+        textPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -131,11 +131,6 @@ public class Dashboard extends javax.swing.JFrame {
         dialogLogin.getContentPane().add(jLabel4);
         jLabel4.setBounds(70, 120, 63, 17);
 
-        textPassword.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        textPassword.setText("Inzanami123");
-        dialogLogin.getContentPane().add(textPassword);
-        textPassword.setBounds(70, 220, 270, 30);
-
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Password");
         dialogLogin.getContentPane().add(jLabel5);
@@ -160,6 +155,10 @@ public class Dashboard extends javax.swing.JFrame {
         });
         dialogLogin.getContentPane().add(btnLogin);
         btnLogin.setBounds(70, 290, 160, 25);
+
+        textPassword.setText("Inzanami123");
+        dialogLogin.getContentPane().add(textPassword);
+        textPassword.setBounds(70, 220, 270, 30);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flash Laundry Apps");
@@ -318,7 +317,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JMenu menuMenu;
     private javax.swing.JMenuItem menuPengguna;
     private javax.swing.JMenuItem menuPesan;
-    private javax.swing.JTextField textPassword;
+    private javax.swing.JPasswordField textPassword;
     private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
 }

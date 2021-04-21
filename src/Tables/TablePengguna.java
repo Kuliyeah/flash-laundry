@@ -31,15 +31,15 @@ public class TablePengguna extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return list.get(rowIndex).getIdPengguna();
-            case 1:
                 return list.get(rowIndex).getUsername();
-            case 2:
+            case 1:
                 return list.get(rowIndex).getNoHP();
-            case 3:
+            case 2:
                 return list.get(rowIndex).getAlamatPengguna();
-            case 4:
+            case 3:
                 return list.get(rowIndex).getEmail();
+            case 4:
+                return list.get(rowIndex).getKataSandi();
             default:
                 return null;
         }
@@ -49,14 +49,12 @@ public class TablePengguna extends AbstractTableModel{
     public String getColumnName(int kolom) {
          switch (kolom) {
             case 0:
-                return "ID Pengguna";
-            case 1:
                 return "Nama Pengguna";
-            case 2:
+            case 1:
                 return "No. Telp";
-            case 3:
+            case 2:
                 return "Alamat";
-            case 4:
+            case 3:
                 return "Email";
             default:
                 return null;

@@ -3,7 +3,6 @@ package Models;
  * @author dzakwandh
  */
 public class Pengguna {
-    private int idPengguna;
     private String username;
     private String noHP;
     private String alamatPengguna;
@@ -11,14 +10,6 @@ public class Pengguna {
     private String kataSandi;
 
     public Pengguna() {
-    }
-
-    public int getIdPengguna() {
-        return idPengguna;
-    }
-
-    public void setIdPengguna(int idPengguna) {
-        this.idPengguna = idPengguna;
     }
 
     public String getUsername() {
