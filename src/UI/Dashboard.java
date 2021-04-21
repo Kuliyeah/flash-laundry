@@ -116,6 +116,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         dialogLogin.setTitle("Login | Flash Laundry");
         dialogLogin.setMinimumSize(new java.awt.Dimension(400, 462));
+        dialogLogin.setPreferredSize(new java.awt.Dimension(400, 462));
         dialogLogin.setResizable(false);
         dialogLogin.setSize(new java.awt.Dimension(400, 462));
         dialogLogin.getContentPane().setLayout(null);
@@ -131,6 +132,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4.setBounds(70, 120, 63, 17);
 
         textPassword.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        textPassword.setText("Inzanami123");
         dialogLogin.getContentPane().add(textPassword);
         textPassword.setBounds(70, 220, 270, 30);
 
@@ -140,6 +142,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5.setBounds(70, 190, 61, 17);
 
         textUsername.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        textUsername.setText("lovanto");
         dialogLogin.getContentPane().add(textUsername);
         textUsername.setBounds(70, 150, 270, 30);
 
@@ -254,8 +257,8 @@ public class Dashboard extends javax.swing.JFrame {
      * set text field null, then show dialog login.
     */
     private void menuLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoginActionPerformed
-        textUsername.setText("");
-        textPassword.setText("");
+//        textUsername.setText("");
+//        textPassword.setText("");
         dialogLogin.setVisible(true);
     }//GEN-LAST:event_menuLoginActionPerformed
 
