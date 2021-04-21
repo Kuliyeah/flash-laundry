@@ -11,11 +11,20 @@ package UI;
  */
 public class Dashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Dashboard
-     */
+    //this method is to control which menu will be active or non-active
+    private void setMenuLogout() {
+//        menuLogin.setEnabled(true);
+//        menuExit.setEnabled(true);
+//        menuBayar.setEnabled(false);
+//        menuJasa.setEnabled(false);
+//        menuLogout.setEnabled(false);
+//        menuPesan.setEnabled(false);
+//        menuPengguna.setEnabled(false);
+    }
+     
     public Dashboard() {
         initComponents();
+        setMenuLogout();
     }
 
     /**
@@ -27,135 +36,160 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        dialogLogin = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        textPassword = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        textUsername = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuAuth = new javax.swing.JMenu();
+        menuLogin = new javax.swing.JMenuItem();
+        menuLogout = new javax.swing.JMenuItem();
+        menuMenu = new javax.swing.JMenu();
+        menuPengguna = new javax.swing.JMenuItem();
+        menuJasa = new javax.swing.JMenuItem();
+        menuBayar = new javax.swing.JMenuItem();
+        menuPesan = new javax.swing.JMenuItem();
+        menuExit = new javax.swing.JMenu();
+
+        dialogLogin.setMinimumSize(new java.awt.Dimension(402, 386));
+        dialogLogin.setPreferredSize(new java.awt.Dimension(402, 386));
+        dialogLogin.setResizable(false);
+        dialogLogin.setSize(new java.awt.Dimension(402, 386));
+        dialogLogin.getContentPane().setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Lato", 1, 30)); // NOI18N
+        jLabel3.setText("Login");
+        dialogLogin.getContentPane().add(jLabel3);
+        jLabel3.setBounds(160, 50, 82, 37);
+
+        jLabel4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel4.setText("Username");
+        dialogLogin.getContentPane().add(jLabel4);
+        jLabel4.setBounds(70, 120, 63, 17);
+
+        textPassword.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        dialogLogin.getContentPane().add(textPassword);
+        textPassword.setBounds(70, 220, 270, 30);
+
+        jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jLabel5.setText("Password");
+        dialogLogin.getContentPane().add(jLabel5);
+        jLabel5.setBounds(70, 190, 61, 17);
+
+        textUsername.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        dialogLogin.getContentPane().add(textUsername);
+        textUsername.setBounds(70, 150, 270, 30);
+
+        jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jButton1.setText("Batal");
+        dialogLogin.getContentPane().add(jButton1);
+        jButton1.setBounds(270, 290, 67, 25);
+
+        jButton2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        jButton2.setText("Login");
+        dialogLogin.getContentPane().add(jButton2);
+        jButton2.setBounds(70, 290, 160, 25);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Flash Laundry Apps");
         setBackground(java.awt.Color.black);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
-        setSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(546, 252));
+        setPreferredSize(new java.awt.Dimension(546, 252));
+        setResizable(false);
+        setSize(new java.awt.Dimension(546, 252));
         getContentPane().setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Lato", 1, 36)); // NOI18N
-        jLabel1.setText("Dashboard");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 50, 200, 44);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\download.png")); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(120, 190, 225, 177);
+        jLabel2.setBounds(120, 190, 0, 0);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Pelanggan");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(120, 390, 225, 34);
+        jLabel1.setText("Selamat Datang di Flash Laundry...");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(340, 180, 240, 14);
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Master"));
+        menuAuth.setText("Auth");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\laundry+machine+wash+washing+icon-1320183749358577657.png")); // NOI18N
-        jLayeredPane1.add(jLabel3);
-        jLabel3.setBounds(360, 60, 169, 177);
+        menuLogin.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menuLogin.setText("Login");
+        menuLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLoginActionPerformed(evt);
+            }
+        });
+        menuAuth.add(menuLogin);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Jasa");
-        jLayeredPane1.add(jLabel6);
-        jLabel6.setBounds(360, 260, 169, 34);
+        menuLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        menuLogout.setText("Logout");
+        menuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLogoutActionPerformed(evt);
+            }
+        });
+        menuAuth.add(menuLogout);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\png-clipart-computer-icons-form-template-document-order-compare-icon-template-angle.png")); // NOI18N
-        jLayeredPane1.add(jLabel8);
-        jLabel8.setBounds(640, 60, 180, 177);
+        jMenuBar1.add(menuAuth);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Pemesanan");
-        jLayeredPane1.add(jLabel9);
-        jLabel9.setBounds(640, 260, 132, 34);
+        menuMenu.setText("Menu");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lovanto\\Downloads\\png-clipart-computer-icons-form-template-document-order-compare-icon-template-angle.png")); // NOI18N
-        jLayeredPane1.add(jLabel7);
-        jLabel7.setBounds(900, 60, 175, 177);
+        menuPengguna.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        menuPengguna.setText("User");
+        menuPengguna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPenggunaActionPerformed(evt);
+            }
+        });
+        menuMenu.add(menuPengguna);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Pembayaran");
-        jLayeredPane1.add(jLabel5);
-        jLabel5.setBounds(900, 260, 132, 34);
+        menuJasa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
+        menuJasa.setText("Jasa");
+        menuMenu.add(menuJasa);
 
-        getContentPane().add(jLayeredPane1);
-        jLayeredPane1.setBounds(70, 130, 1130, 340);
+        menuBayar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        menuBayar.setText("Bayar");
+        menuMenu.add(menuBayar);
 
-        jMenu1.setText("Login");
-        jMenuBar1.add(jMenu1);
+        menuPesan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        menuPesan.setText("Pesan");
+        menuMenu.add(menuPesan);
 
-        jMenu5.setText("Pengguna");
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menuMenu);
 
-        jMenu6.setText("Jasa");
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setText("Pemesanan");
-        jMenuBar1.add(jMenu7);
-
-        jMenu8.setText("Bayar");
-        jMenuBar1.add(jMenu8);
-
-        jMenu3.setText("Logout");
-        jMenuBar1.add(jMenu3);
-
-        jMenu2.setText("Exit");
-        jMenuBar1.add(jMenu2);
+        menuExit.setText("Exit");
+        jMenuBar1.add(menuExit);
 
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+     * when menu login clicked do:
+     * set text field null, then show dialog login.
+    */
+    private void menuLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoginActionPerformed
+        textUsername.setText("");
+        textPassword.setText("");
+        dialogLogin.setVisible(true);
+    }//GEN-LAST:event_menuLoginActionPerformed
 
-        /* Create and display the form */
+    /**
+     * when menu login clicked make some menu cannot be access 
+     * until they login again.
+    */
+    private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
+        setMenuLogout();
+    }//GEN-LAST:event_menuLogoutActionPerformed
+
+    private void menuPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPenggunaActionPerformed
+        new Registrasi().show();
+    }//GEN-LAST:event_menuPenggunaActionPerformed
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Dashboard().setVisible(true);
@@ -164,23 +198,25 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog dialogLogin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuAuth;
+    private javax.swing.JMenuItem menuBayar;
+    private javax.swing.JMenu menuExit;
+    private javax.swing.JMenuItem menuJasa;
+    private javax.swing.JMenuItem menuLogin;
+    private javax.swing.JMenuItem menuLogout;
+    private javax.swing.JMenu menuMenu;
+    private javax.swing.JMenuItem menuPengguna;
+    private javax.swing.JMenuItem menuPesan;
+    private javax.swing.JTextField textPassword;
+    private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
 }
