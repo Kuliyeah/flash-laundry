@@ -5,17 +5,66 @@
  */
 package UI;
 
+import Config.Conn;
+import Models.Pengguna;
+import Tables.TablePengguna;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
- * @author COMPUTER SHOP
+ * @author Lovanto
  */
 public class Registrasi extends javax.swing.JFrame {
-
+    //Init var
+    private Object tabel;
+    private TablePengguna tabelDataPengguna;
+    private Conn conn;
     /**
      * Creates new form Registrasi
      */
     public Registrasi() {
         initComponents();
+        conn = new Conn();
+        tabelDataPengguna = new TablePengguna();
+        tablePengguna.setModel(tabelDataPengguna);
+        tampil();
+        SetEditOff();
+    }
+    
+    private void tampil(){
+        try{
+            int baris = tablePengguna.getRowCount();
+            for(int i = 0; i < baris; i++) {
+                tabelDataPengguna.delete(0, baris);
+            }
+            String sql = "SELECT * FROM pengguna";
+            ResultSet rs = conn.getData(sql);
+            while(rs.next()){
+                Pengguna pengguna = new Pengguna();
+                pengguna.setIdPengguna(Integer.parseInt(rs.getString(1)));
+                pengguna.setUsername(rs.getString(2));
+                pengguna.setNoHP(rs.getString(3));
+                pengguna.setAlamatPengguna(rs.getString(4));
+                pengguna.setEmail(rs.getString(5));
+                tabelDataPengguna.add(pengguna);
+            }
+        } catch (SQLException ex) {
+            System.err.print(ex);
+        }
+    }
+    
+    public void SetEditOff(){
+//        txtnamabarang.setEnabled(false);
+//        txtkdbarang.setEnabled(false);
+//        txthargajual.setEnabled(false);
+//        txtharganet.setEnabled(false);
+//        txtjenisbarang.setEnabled(false);
+//        txtstok.setEnabled(false);
+//        btnsave.setEnabled(false);
+//        btndelete.setEnabled(false);
+//        btnupdate.setEnabled(false);
+//        btnnew.setEnabled(true);
     }
 
     /**
@@ -41,7 +90,7 @@ public class Registrasi extends javax.swing.JFrame {
         textField4 = new java.awt.TextField();
         textField5 = new java.awt.TextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablePengguna = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -109,7 +158,7 @@ public class Registrasi extends javax.swing.JFrame {
         getContentPane().add(textField5);
         textField5.setBounds(30, 190, 292, 35);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablePengguna.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -120,7 +169,7 @@ public class Registrasi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablePengguna);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(360, 30, 760, 610);
@@ -129,34 +178,7 @@ public class Registrasi extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registrasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registrasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registrasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registrasi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Registrasi().setVisible(true);
@@ -169,12 +191,12 @@ public class Registrasi extends javax.swing.JFrame {
     private java.awt.Button button1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
+    private javax.swing.JTable tablePengguna;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     private java.awt.TextField textField3;

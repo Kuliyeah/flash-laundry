@@ -1,4 +1,4 @@
-package Table;
+package Models;
 /*
  * @author dzakwandh
  */
@@ -10,13 +10,7 @@ public class Pengguna {
     private String email;
     private String kataSandi;
 
-    public Pengguna(int idPengguna, String username, String noHP, String alamatPengguna, String email, String kataSandi) {
-        this.idPengguna = idPengguna;
-        this.username = username;
-        this.noHP = noHP;
-        this.alamatPengguna = alamatPengguna;
-        this.email = email;
-        this.kataSandi = kataSandi;
+    public Pengguna() {
     }
 
     public int getIdPengguna() {
