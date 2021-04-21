@@ -7,27 +7,57 @@ package Config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Lovanto
  */
 public class Conn {
-    //init var
-    private Connection connection;
-
-    public Connection getConnection() {
-        return this.connection;
+    //Init var
+    private Connection conn;
+    private Statement stm;
+    ResultSet rs;
+    String url = "jdbc:mysql://localhost/flashLaundry";
+    String user = "root";
+    String pass = "";
+    
+    public Conn(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(url,user,pass);
+            stm = conn.createStatement();
+        }catch(SQLException ex){
+            System.err.print(ex);
+        }catch(ClassNotFoundException ex){
+            System.err.print(ex);
+        } 
     }
-
-    public void setConnection(Config config) {
-       String connString;
-       try {
-           connString = "jdbc:mysql://" + config.getHost() + "/" + config.getDatabase();
-           this.connection = DriverManager.getConnection(connString, config.getUsername(), config.getPassword());
-       } catch (SQLException e) {
-           System.out.println("Terjadi kesalahan dalam koneksi database: " + e.toString());
-       }
+    
+    public ResultSet getData(String SQLString){
+        try {
+            rs = stm.executeQuery(SQLString);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "error :"
+                    +e.getMessage(),"Communication Error pada method getdata",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        return rs;
+    }
+     
+    public void query (String SQLString){
+        try {
+            stm.execute(SQLString);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog
+                    (null, "error"+e.getMessage(),
+                            "Communication Error pada method query",
+                            JOptionPane.WARNING_MESSAGE);
+        }
     }
 }

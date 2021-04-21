@@ -5,26 +5,83 @@
  */
 package UI;
 
+import Config.Conn;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lovanto
  */
 public class Dashboard extends javax.swing.JFrame {
+    //Init var
+    public Conn conn;
 
-    //this method is to control which menu will be active or non-active
+    /**
+     * When menu logout clicked or not login yet, make some menu cannot 
+     * be access until they login again.
+    */
     private void setMenuLogout() {
-//        menuLogin.setEnabled(true);
-//        menuExit.setEnabled(true);
-//        menuBayar.setEnabled(false);
-//        menuJasa.setEnabled(false);
-//        menuLogout.setEnabled(false);
-//        menuPesan.setEnabled(false);
-//        menuPengguna.setEnabled(false);
+        menuLogin.setEnabled(true);
+        menuExit.setEnabled(true);
+        menuBayar.setEnabled(false);
+        menuJasa.setEnabled(false);
+        menuLogout.setEnabled(false);
+        menuPesan.setEnabled(false);
+        menuPengguna.setEnabled(false);
+    }
+    
+    /**
+     * When menu user success login, make some menu can be access 
+     * until they logout or program closed.
+    */
+    private void setMenuLogin() {
+        menuLogin.setEnabled(false);
+        menuExit.setEnabled(true);
+        menuBayar.setEnabled(true);
+        menuJasa.setEnabled(true);
+        menuLogout.setEnabled(true);
+        menuPesan.setEnabled(true);
+        menuPengguna.setEnabled(true);
+    }
+    
+    /**
+     * This method is used for check user already registered or have a valid
+     * account in our database.
+     * @return true if username and password valid.
+     */
+    public boolean cekLogin(){
+        String namaPengguna = "";
+        try{
+            String sql="SELECT * FROM pengguna WHERE username='"
+                    +textUsername.getText()+
+                    "' and kataSandi ='"+textPassword.getText()+"'";
+            ResultSet rs = conn.getData(sql);
+            while (rs.next()){
+                namaPengguna = rs.getString(2);
+            }
+            if(namaPengguna.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Login Gagal!");    
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Anda Berhasil Login!"
+                +"\nSelamat Datang " + namaPengguna);
+                setMenuLogin();
+                dialogLogin.setVisible(false);
+                return true;
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Ada Kesalahan: " + e);
+         }
+        return false;
     }
      
     public Dashboard() {
         initComponents();
         setMenuLogout();
+        conn =new Conn();
     }
 
     /**
@@ -42,8 +99,8 @@ public class Dashboard extends javax.swing.JFrame {
         textPassword = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         textUsername = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -53,14 +110,14 @@ public class Dashboard extends javax.swing.JFrame {
         menuMenu = new javax.swing.JMenu();
         menuPengguna = new javax.swing.JMenuItem();
         menuJasa = new javax.swing.JMenuItem();
-        menuBayar = new javax.swing.JMenuItem();
         menuPesan = new javax.swing.JMenuItem();
+        menuBayar = new javax.swing.JMenuItem();
         menuExit = new javax.swing.JMenu();
 
-        dialogLogin.setMinimumSize(new java.awt.Dimension(402, 386));
-        dialogLogin.setPreferredSize(new java.awt.Dimension(402, 386));
+        dialogLogin.setTitle("Login | Flash Laundry");
+        dialogLogin.setMinimumSize(new java.awt.Dimension(400, 462));
         dialogLogin.setResizable(false);
-        dialogLogin.setSize(new java.awt.Dimension(402, 386));
+        dialogLogin.setSize(new java.awt.Dimension(400, 462));
         dialogLogin.getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Lato", 1, 30)); // NOI18N
@@ -86,15 +143,20 @@ public class Dashboard extends javax.swing.JFrame {
         dialogLogin.getContentPane().add(textUsername);
         textUsername.setBounds(70, 150, 270, 30);
 
-        jButton1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jButton1.setText("Batal");
-        dialogLogin.getContentPane().add(jButton1);
-        jButton1.setBounds(270, 290, 67, 25);
+        btnBatal.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        btnBatal.setText("Batal");
+        dialogLogin.getContentPane().add(btnBatal);
+        btnBatal.setBounds(270, 290, 67, 25);
 
-        jButton2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
-        jButton2.setText("Login");
-        dialogLogin.getContentPane().add(jButton2);
-        jButton2.setBounds(70, 290, 160, 25);
+        btnLogin.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        dialogLogin.getContentPane().add(btnLogin);
+        btnLogin.setBounds(70, 290, 160, 25);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flash Laundry Apps");
@@ -146,19 +208,39 @@ public class Dashboard extends javax.swing.JFrame {
 
         menuJasa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
         menuJasa.setText("Jasa");
+        menuJasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuJasaActionPerformed(evt);
+            }
+        });
         menuMenu.add(menuJasa);
-
-        menuBayar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        menuBayar.setText("Bayar");
-        menuMenu.add(menuBayar);
 
         menuPesan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         menuPesan.setText("Pesan");
+        menuPesan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPesanActionPerformed(evt);
+            }
+        });
         menuMenu.add(menuPesan);
+
+        menuBayar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        menuBayar.setText("Bayar");
+        menuBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBayarActionPerformed(evt);
+            }
+        });
+        menuMenu.add(menuBayar);
 
         jMenuBar1.add(menuMenu);
 
         menuExit.setText("Exit");
+        menuExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuExitMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(menuExit);
 
         setJMenuBar(jMenuBar1);
@@ -168,7 +250,7 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * when menu login clicked do:
+     * When menu login clicked do:
      * set text field null, then show dialog login.
     */
     private void menuLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoginActionPerformed
@@ -177,10 +259,6 @@ public class Dashboard extends javax.swing.JFrame {
         dialogLogin.setVisible(true);
     }//GEN-LAST:event_menuLoginActionPerformed
 
-    /**
-     * when menu login clicked make some menu cannot be access 
-     * until they login again.
-    */
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
         setMenuLogout();
     }//GEN-LAST:event_menuLogoutActionPerformed
@@ -188,6 +266,27 @@ public class Dashboard extends javax.swing.JFrame {
     private void menuPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPenggunaActionPerformed
         new Registrasi().show();
     }//GEN-LAST:event_menuPenggunaActionPerformed
+
+    private void menuJasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuJasaActionPerformed
+        new InputJasa().show();
+    }//GEN-LAST:event_menuJasaActionPerformed
+
+    private void menuBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBayarActionPerformed
+        new InputPemesanan().show();
+    }//GEN-LAST:event_menuBayarActionPerformed
+
+    private void menuPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesanActionPerformed
+        new InputPemesanan().show();
+    }//GEN-LAST:event_menuPesanActionPerformed
+
+    private void menuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuExitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_menuExitMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        boolean loginCheck = cekLogin();
+        if(loginCheck == true) dialogLogin.setVisible(false);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -198,9 +297,9 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JDialog dialogLogin;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
