@@ -1,4 +1,4 @@
-package flashlaundry;
+package Table;
 /*
  * @author dzakwandh
  */

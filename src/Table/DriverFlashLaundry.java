@@ -1,4 +1,4 @@
-package flashlaundry;
+package Table;
 
 import java.util.Scanner;
 
