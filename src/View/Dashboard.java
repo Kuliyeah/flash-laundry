@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package View;
 
 import Config.Conn;
 import java.sql.ResultSet;
@@ -58,7 +58,7 @@ public class Dashboard extends javax.swing.JFrame {
                     "' and kataSandi ='"+textPassword.getText()+"'";
             ResultSet rs = conn.getData(sql);
             while (rs.next()){
-                namaPengguna = rs.getString(1);
+                namaPengguna = rs.getString(2);
             }
             if(namaPengguna.equals(""))
             {
@@ -81,7 +81,7 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         setMenuLogout();
-        conn =new Conn();
+        conn = new Conn();
     }
 
     /**
@@ -116,7 +116,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         dialogLogin.setTitle("Login | Flash Laundry");
         dialogLogin.setMinimumSize(new java.awt.Dimension(400, 462));
-        dialogLogin.setPreferredSize(new java.awt.Dimension(400, 462));
         dialogLogin.setResizable(false);
         dialogLogin.setSize(new java.awt.Dimension(400, 462));
         dialogLogin.getContentPane().setLayout(null);
@@ -164,7 +163,6 @@ public class Dashboard extends javax.swing.JFrame {
         setTitle("Flash Laundry Apps");
         setBackground(java.awt.Color.black);
         setMinimumSize(new java.awt.Dimension(546, 252));
-        setPreferredSize(new java.awt.Dimension(546, 252));
         setResizable(false);
         setSize(new java.awt.Dimension(546, 252));
         getContentPane().setLayout(null);
@@ -262,7 +260,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_menuLoginActionPerformed
 
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
-        setMenuLogout();
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin logout?");
+        if(dialogResult == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Anda berhasil logout");
+            setMenuLogout();
+        }
     }//GEN-LAST:event_menuLogoutActionPerformed
 
     private void menuPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPenggunaActionPerformed

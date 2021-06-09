@@ -1,5 +1,5 @@
 //test
-package UI;
+package View;
 
 /**
  *
@@ -41,14 +41,12 @@ public class ProfilPelanggan extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\coba user.png")); // NOI18N
         jLabel1.setText("Angelia Patricia");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -78,7 +76,6 @@ public class ProfilPelanggan extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(18, 185, 238));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\Vector.png")); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -89,7 +86,6 @@ public class ProfilPelanggan extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\shopping-cart.png")); // NOI18N
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +94,6 @@ public class ProfilPelanggan extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\home.png")); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +102,6 @@ public class ProfilPelanggan extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\Vector (1).png")); // NOI18N
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +110,6 @@ public class ProfilPelanggan extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\image 1 (1).png")); // NOI18N
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +148,7 @@ public class ProfilPelanggan extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 80, 690);
+        jPanel2.setBounds(0, 0, 80, 0);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel13.setText("ID PELANGGAN");
@@ -193,13 +186,11 @@ public class ProfilPelanggan extends javax.swing.JFrame {
         jPanel1.add(jLabel20);
         jLabel20.setBounds(140, 20, 208, 50);
 
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\refresh.png")); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jPanel1.add(jButton2);
-        jButton2.setBounds(340, 210, 40, 43);
+        jButton2.setBounds(340, 210, 40, 9);
 
-        jButton4.setIcon(new javax.swing.ImageIcon("D:\\Materi Kuliah SE\\SEMESTER 4\\PBO\\TUBES\\REF\\fotoicon\\Group 1.png")); // NOI18N
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {

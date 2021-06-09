@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package View;
 
 /**
  *
@@ -33,7 +33,6 @@ public class DetailLaundry extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textField1.setCaretPosition(0);
         textField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         textField1.setForeground(new java.awt.Color(204, 204, 255));
@@ -45,8 +44,6 @@ public class DetailLaundry extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("F:\\Design properti\\Image.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

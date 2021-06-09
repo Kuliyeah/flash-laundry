@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tables;
+package Controller;
 
 import Models.Pengguna;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Lovanto
  */
-public class TablePengguna extends AbstractTableModel{
+public class ControllerPengguna extends AbstractTableModel{
     private List<Pengguna> list = new ArrayList<Pengguna>();
 
     @Override

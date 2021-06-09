@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package View;
 
 /**
  *
@@ -44,7 +44,6 @@ public class InputPemesanan extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(506, 500));
         setSize(new java.awt.Dimension(506, 500));
         getContentPane().setLayout(null);
 

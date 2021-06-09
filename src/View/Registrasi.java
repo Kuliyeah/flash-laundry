@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package View;
 
 import Config.Conn;
 import Models.Pengguna;
-import Tables.TablePengguna;
+import Controller.ControllerPengguna;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class Registrasi extends javax.swing.JFrame {
     //Init var
     private Object tabel;
-    private TablePengguna tabelDataPengguna;
+    private ControllerPengguna tabelDataPengguna;
     private Conn conn;
     /**
      * Creates new form Registrasi
@@ -27,7 +27,7 @@ public class Registrasi extends javax.swing.JFrame {
     public Registrasi() {
         initComponents();
         conn = new Conn();
-        tabelDataPengguna = new TablePengguna();
+        tabelDataPengguna = new ControllerPengguna();
         tablePengguna.setModel(tabelDataPengguna);
         tampilData();
         SetEditOff();
@@ -65,6 +65,7 @@ public class Registrasi extends javax.swing.JFrame {
         textEmail.setText(pengguna.getEmail());
         textPassword.setText(pengguna.getKataSandi());
         btnSave.setEnabled(false);
+        btnNew.setEnabled(false);
         SetEditOn();
     }
     
@@ -135,7 +136,6 @@ public class Registrasi extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1149, 590));
-        setPreferredSize(new java.awt.Dimension(1149, 590));
         setResizable(false);
         setSize(new java.awt.Dimension(1149, 590));
         getContentPane().setLayout(null);
@@ -149,27 +149,27 @@ public class Registrasi extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label1.setText("No. HP");
         getContentPane().add(label1);
-        label1.setBounds(30, 140, 47, 24);
+        label1.setBounds(30, 140, 290, 24);
 
         label2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label2.setText("Username");
         getContentPane().add(label2);
-        label2.setBounds(30, 80, 91, 24);
+        label2.setBounds(30, 80, 290, 24);
 
         label3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label3.setText("Alamat");
         getContentPane().add(label3);
-        label3.setBounds(30, 200, 47, 24);
+        label3.setBounds(30, 200, 290, 24);
 
         label4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label4.setText("Email");
         getContentPane().add(label4);
-        label4.setBounds(30, 340, 36, 24);
+        label4.setBounds(30, 340, 290, 24);
 
         label5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         label5.setText("Kata Sandi");
         getContentPane().add(label5);
-        label5.setBounds(30, 400, 68, 24);
+        label5.setBounds(30, 400, 290, 24);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(97, 34, 0, 0);
 
