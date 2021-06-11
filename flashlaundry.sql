@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 06:54 PM
+-- Generation Time: Jun 11, 2021 at 03:22 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `flashlaundry`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jasa`
+--
+
+CREATE TABLE `jasa` (
+  `idJasa` int(11) NOT NULL,
+  `namaJasa` varchar(255) NOT NULL,
+  `deskripsiJasa` text NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -42,9 +55,32 @@ CREATE TABLE `pengguna` (
 INSERT INTO `pengguna` (`username`, `noHP`, `alamatPengguna`, `email`, `kataSandi`, `create_date`) VALUES
 ('lovanto', '087823837566', 'Bandung pada saatnya akan pergi untuk mencari sesuap berlian', 'rifkylovanto@gmail.com', 'Inzanami123', '2021-04-21 02:45:55');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `idTransaksi` int(11) NOT NULL,
+  `idJasa` int(11) NOT NULL,
+  `idPengguna` int(11) NOT NULL,
+  `deskripsiTransaksi` text NOT NULL,
+  `berat` int(11) NOT NULL,
+  `ongkir` int(11) NOT NULL,
+  `bayar` int(11) NOT NULL,
+  `kembalian` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `jasa`
+--
+ALTER TABLE `jasa`
+  ADD PRIMARY KEY (`idJasa`);
 
 --
 -- Indexes for table `pengguna`
@@ -52,6 +88,26 @@ INSERT INTO `pengguna` (`username`, `noHP`, `alamatPengguna`, `email`, `kataSand
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`username`);
 
+--
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`idTransaksi`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `jasa`
+--
+ALTER TABLE `jasa`
+  MODIFY `idJasa` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `idTransaksi` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
