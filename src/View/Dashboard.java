@@ -58,7 +58,7 @@ public class Dashboard extends javax.swing.JFrame {
                     "' and kataSandi ='"+textPassword.getText()+"'";
             ResultSet rs = conn.getData(sql);
             while (rs.next()){
-                namaPengguna = rs.getString(2);
+                namaPengguna = rs.getString(1);
             }
             if(namaPengguna.equals(""))
             {
