@@ -5,17 +5,33 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+import Config.Conn;
+import Controller.ControllerJasa;
+import Models.Jasa;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author LENOVO
  */
 public class InputJasa extends javax.swing.JFrame {
 
+    private Object tabel;
+    private Conn conn;
+    private ControllerJasa tabelDataJasa;
+
     /**
      * Creates new form Chat
      */
     public InputJasa() {
         initComponents();
+        conn = new Conn();
+        tabelDataJasa = new ControllerJasa();
+        tabelJasa.setModel(tabelDataJasa);
+        tampilData();
+        SetEditOff();
     }
 
     /**
@@ -33,12 +49,20 @@ public class InputJasa extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        textField1 = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
-        textField2 = new java.awt.TextField();
         jLabel3 = new javax.swing.JLabel();
-        textField3 = new java.awt.TextField();
-        jButton2 = new javax.swing.JButton();
+        tfNamaPaket = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taDeskripsiPaket = new javax.swing.JTextArea();
+        tfHarga = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelJasa = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnNew = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -62,78 +86,132 @@ public class InputJasa extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel1.setText("Nama Paket");
 
-        textField1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        textField1.setName(""); // NOI18N
-        textField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel2.setText("Harga");
-
-        textField2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
-        textField2.setName(""); // NOI18N
-        textField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField2ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel3.setText("Deskripsi Paket ");
 
-        textField3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        textField3.setName(""); // NOI18N
-        textField3.addActionListener(new java.awt.event.ActionListener() {
+        taDeskripsiPaket.setColumns(20);
+        taDeskripsiPaket.setRows(5);
+        jScrollPane1.setViewportView(taDeskripsiPaket);
+
+        jScrollPane2.setViewportView(tabelJasa);
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel4.setText("Preview :");
+
+        btnSave.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btnSave.setText("Save");
+        btnSave.setPreferredSize(new java.awt.Dimension(73, 23));
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField3ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Tambahkan");
+        btnUpdate.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.setPreferredSize(new java.awt.Dimension(73, 23));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnNew.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btnNew.setText("New");
+        btnNew.setPreferredSize(new java.awt.Dimension(73, 23));
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.setPreferredSize(new java.awt.Dimension(73, 23));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.setPreferredSize(new java.awt.Dimension(73, 23));
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(189, 189, 189))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(70, 70, 70))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(tfNamaPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(304, 304, 304)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButton2)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfNamaPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,18 +220,148 @@ public class InputJasa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+    public void SetEditOff() {
+        tfNamaPaket.setEnabled(false);
+        taDeskripsiPaket.setEnabled(false);
+        tfHarga.setEnabled(false);
+        btnCancel.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(false);
+        btnNew.setEnabled(true);
+    }
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    public void tampilData() {
+        try {
+            int baris = tabelJasa.getRowCount();
+            for (int i = 0; i < baris; i++) {
+                tabelDataJasa.delete(0, baris);
+            }
+            String sql = "SELECT * FROM jasa";
+            ResultSet rs = conn.getData(sql);
+            while (rs.next()) {
+                Jasa jasa = new Jasa();
+                jasa.setNamaJasa(rs.getString(1));
+                jasa.setDeskripsiJasa(rs.getString(2));
+                jasa.setHarga(rs.getString(3));
+                tabelDataJasa.add(jasa);
+            }
+        } catch (SQLException ex) {
+            System.err.print(ex);
+        }
+    }
 
-    private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField2ActionPerformed
+    public void clearText() {
+        tfNamaPaket.setText("");
+        taDeskripsiPaket.setText("");
+        tfHarga.setText("");
+    }
+    
+    public void SetEditOn(){
+        tfNamaPaket.setEnabled(true);
+        taDeskripsiPaket.setEnabled(true);
+        tfHarga.setEnabled(true);
+        btnCancel.setEnabled(false);
+        btnDelete.setEnabled(true);
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        btnNew.setEnabled(true);
+    }
+    
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        String namaPaket = tfNamaPaket.getText();
+        String deskripsiPaket = taDeskripsiPaket.getText();
+        String harga = tfHarga.getText();
+        if ((namaPaket.isEmpty()) | (deskripsiPaket.isEmpty()) | (harga.isEmpty())) {
+            JOptionPane.showMessageDialog(null, "data tidak boleh kosong, "
+                    + "silahkan dilengkapi");
+            tfNamaPaket.requestFocus();
+        } else {
+            try {
+                String sql = "INSERT INTO `jasa` (`namaJasa`, `deskripsiJasa`, "
+                        + "`harga`) "
+                        + "VALUES ("
+                        + "'" + namaPaket + "',"
+                        + "'" + deskripsiPaket + "',"
+                        + "'" + harga + "'"
+                        + ");";
+                conn.query(sql);
+                tampilData();
+                JOptionPane.showMessageDialog(null, namaPaket + " Berhasil Disimpan");
+                clearText();
+                SetEditOff();
+                btnNew.setEnabled(true);
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField3ActionPerformed
+        clearText();
+        tfNamaPaket.requestFocus();
+        SetEditOn();
+        btnSave.setEnabled(true);
+        btnDelete.setEnabled(false);
+        btnNew.setEnabled(false);
+        btnCancel.setEnabled(true);
+        btnUpdate.setEnabled(false);
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        String namaPaket = tfNamaPaket.getText();
+        String deskripsi = taDeskripsiPaket.getText();
+        String harga = tfHarga.getText();
+        if ((namaPaket.isEmpty()) | (deskripsi.isEmpty()) | (harga.isEmpty())){
+            JOptionPane.showMessageDialog(null, "data tidak boleh kosong, " +
+                "silahkan dilengkapi");
+            tfNamaPaket.requestFocus();
+        }else {
+            try {
+                String sql = "UPDATE `pengguna` SET "
+                        + "namaJasa = '" + namaPaket + "',"
+                        + "deskripsiJasa = '" + deskripsi + "',"
+                        + "harga = '" + harga + "',";
+                conn.query(sql);
+                tampilData();
+                JOptionPane.showMessageDialog(null, namaPaket + " Berhasil Diperbarui");
+                clearText();
+                SetEditOff();
+                btnNew.setEnabled(true);
+            }catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        String namaPaket = tfNamaPaket.getText();
+        int app;
+        if ((app = JOptionPane.showConfirmDialog(null, "Anda yakin akan menghapus data "
+                + namaPaket+ " ?", "Perhatian", JOptionPane.YES_NO_OPTION)) == 0){
+            try {
+                String sql = "DELETE FROM pengguna WHERE"
+                + " username = '" + namaPaket+ "'";
+                conn.query(sql);
+                tampilData();
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+                clearText();
+                SetEditOff();
+                btnNew.setEnabled(true);
+            }catch (Exception ex) {
+                System.err.print(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        clearText();
+        SetEditOff();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,17 +400,25 @@ public class InputJasa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
-    private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
-    private java.awt.TextField textField3;
+    private javax.swing.JTextArea taDeskripsiPaket;
+    private javax.swing.JTable tabelJasa;
+    private javax.swing.JTextField tfHarga;
+    private javax.swing.JTextField tfNamaPaket;
     // End of variables declaration//GEN-END:variables
 }

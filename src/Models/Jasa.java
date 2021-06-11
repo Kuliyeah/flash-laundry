@@ -8,34 +8,14 @@ package Models;
  * @author gilan
  */
 public class Jasa {
-    private String namaJasa, deskripsiJasa;
-    private int idJasa, idToko, harga, diskon, totalDisukai;
+    private String namaJasa, deskripsiJasa, harga;
 
-    public Jasa(int idJasa, int idToko, String namaJasa, String deskripsiJasa, int harga, int diskon) {
-        this.idJasa = idJasa;
-        this.idToko = idToko;
+    public Jasa(String namaJasa, String deskripsiJasa, String harga) {
         this.namaJasa = namaJasa;
         this.deskripsiJasa = deskripsiJasa;
         this.harga = harga;
-        this.diskon = diskon;
     }
-
-    public int getIdJasa() {
-        return idJasa;
-    }
-
-    public void setIdJasa(int idJasa) {
-        this.idJasa = idJasa;
-    }
-
-    public int getIdToko() {
-        return idToko;
-    }
-
-    public void setIdToko(int idToko) {
-        this.idToko = idToko;
-    }
-
+    public Jasa(){}
     public String getNamaJasa() {
         return namaJasa;
     }
@@ -52,28 +32,13 @@ public class Jasa {
         this.deskripsiJasa = deskripsiJasa;
     }
 
-    public int getHarga() {
+    public String getHarga() {
         return harga;
     }
 
-    public void setHarga(int harga) {
+    public void setHarga(String harga) {
         this.harga = harga;
     }
 
-    public int getDiskon() {
-        return diskon;
-    }
-
-    public void setDiskon(int diskon) {
-        this.diskon = diskon;
-    }
-
-    public int getTotalDisukai() {
-        return totalDisukai;
-    }
-
-    public void setTotalDisukai(int totalDisukai) {
-        this.totalDisukai = totalDisukai;
-    }
 
 }
