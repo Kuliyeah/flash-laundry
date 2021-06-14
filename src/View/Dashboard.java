@@ -276,11 +276,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_menuJasaActionPerformed
 
     private void menuBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBayarActionPerformed
-        new Transaksi().show();
+        new InputTransaksi().show();
     }//GEN-LAST:event_menuBayarActionPerformed
 
     private void menuPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesanActionPerformed
-        new Transaksi().show();
+        new InputTransaksi().show();
     }//GEN-LAST:event_menuPesanActionPerformed
 
     private void menuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuExitMouseClicked

@@ -1,32 +1,38 @@
 package Models;
+
+import java.time.LocalDate;
+
 /*
  * @author LENOVO
  */
 public class Transaksi {
     private String deskripsiCucian;
-    private int idTransaksi, idJasa, idDetailStatus, totalBayar, beratCucian, ongkir, bayar;
+    String tglTransaksi;
+    private int idTransaksi,  totalBayar, beratCucian, ongkir;
 
-    public Transaksi(int idTransaksi, int idJasa, int idDetailStatus, String deskripsiCucian, int beratCucian, int ongkir, int bayar, int totalBayar) {
+    public Transaksi(int idTransaksi, int idJasa, int idDetailStatus, String deskripsiCucian, int beratCucian, int ongkir, int bayar, int totalBayar, String tglTransaksi) {
         this.idTransaksi = idTransaksi;
-        this.idJasa = idJasa;
-        this.idDetailStatus = idDetailStatus;
         this.deskripsiCucian = deskripsiCucian;
         this.beratCucian = beratCucian;
         this.ongkir = ongkir;
-        this.bayar = bayar;
         this.totalBayar = totalBayar;
+        this.tglTransaksi= tglTransaksi;
+    }
+
+    public Transaksi(){
+        
+    }
+    
+    public String getTglTransaksi() {
+        return tglTransaksi;
+    }
+
+    public void setTglTransaksi(String tglTransaksi) {
+        this.tglTransaksi = tglTransaksi;
     }
 
     public int getIdTransaksi() {
         return idTransaksi;
-    }
-
-    public int getIdJasa() {
-        return idJasa;
-    }
-
-    public int getIdDetailStatus() {
-        return idDetailStatus;
     }
 
     public String getDeskripsiCucian() {
@@ -41,24 +47,12 @@ public class Transaksi {
         return ongkir;
     }
 
-    public int getBayar() {
-        return bayar;
-    }
-
     public int getTotalBayar() {
         return totalBayar;
     }
 
     public void setIdTransaksi(int idTransaksi) {
         this.idTransaksi = idTransaksi;
-    }
-
-    public void setIdJasa(int idJasa) {
-        this.idJasa = idJasa;
-    }
-
-    public void setIdDetailStatus(int idDetailStatus) {
-        this.idDetailStatus = idDetailStatus;
     }
 
     public void setDeskripsiCucian(String deskripsiCucian) {
@@ -71,10 +65,6 @@ public class Transaksi {
 
     public void setOngkir(int ongkir) {
         this.ongkir = ongkir;
-    }
-
-    public void setBayar(int bayar) {
-        this.bayar = bayar;
     }
 
     public void setTotalBayar(int totalBayar) {
