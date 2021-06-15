@@ -191,11 +191,11 @@ public class InputJasa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tfNamaPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,7 +217,7 @@ public class InputJasa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -296,8 +296,7 @@ public class InputJasa extends javax.swing.JFrame {
             tfNamaPaket.requestFocus();
         } else {
             try {
-                String sql = "INSERT INTO `jasa` (`namaJasa`, `deskripsiJasa`, "
-                        + "`harga`) "
+                String sql = "INSERT INTO jasa (namaJasa, deskripsiJasa, harga) "
                         + "VALUES ("
                         + "'" + namaPaket + "',"
                         + "'" + deskripsiPaket + "',"
@@ -338,10 +337,11 @@ public class InputJasa extends javax.swing.JFrame {
             tfNamaPaket.requestFocus();
         }else {
             try {
-                String sql = "UPDATE `pengguna` SET "
+                String sql = "UPDATE jasa SET "
                         + "namaJasa = '" + namaPaket + "',"
                         + "deskripsiJasa = '" + deskripsi + "',"
-                        + "harga = '" + harga + "',";
+                        + "harga = '" + harga + "' WHERE "
+                        + "namaJasa = '" + namaPaket + "'";
                 conn.query(sql);
                 tampilData();
                 JOptionPane.showMessageDialog(null, namaPaket + " Berhasil Diperbarui");
@@ -385,6 +385,7 @@ public class InputJasa extends javax.swing.JFrame {
         if(evt.getClickCount()==1){
             TampilText();
         }
+        tfNamaPaket.setEnabled(false);
         btnCancel.setEnabled(true);
         btnNew.setEnabled(false);
     }//GEN-LAST:event_tabelJasaMouseClicked

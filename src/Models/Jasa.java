@@ -15,7 +15,9 @@ public class Jasa {
         this.deskripsiJasa = deskripsiJasa;
         this.harga = harga;
     }
+    
     public Jasa(){}
+    
     public String getNamaJasa() {
         return namaJasa;
     }
