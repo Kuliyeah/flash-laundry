@@ -8,7 +8,7 @@ package Models;
  * @author gilan
  */
 public class Jasa {
-    private String namaJasa, deskripsiJasa, harga;
+    private String idJasa, namaJasa, deskripsiJasa, harga;
 
     public Jasa(String namaJasa, String deskripsiJasa, String harga) {
         this.namaJasa = namaJasa;
@@ -17,6 +17,14 @@ public class Jasa {
     }
     
     public Jasa(){}
+    
+    public String getIDJasa() {
+        return idJasa;
+    }
+
+    public void setIDJasa(String IDJasa) {
+        this.idJasa = IDJasa;
+    }
     
     public String getNamaJasa() {
         return namaJasa;

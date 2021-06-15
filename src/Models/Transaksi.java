@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Transaksi {
     private String deskripsiCucian;
     String tglTransaksi;
-    private int idTransaksi,  totalBayar, beratCucian, ongkir;
+    private int idTransaksi, idJasa,  totalBayar, beratCucian, ongkir;
 
     public Transaksi(int idTransaksi, int idJasa, int idDetailStatus, String deskripsiCucian, int beratCucian, int ongkir, int bayar, int totalBayar, String tglTransaksi) {
         this.idTransaksi = idTransaksi;
@@ -35,6 +35,18 @@ public class Transaksi {
         return idTransaksi;
     }
 
+    public void setIdTransaksi(int idTransaksi) {
+        this.idTransaksi = idTransaksi;
+    }
+
+    public int getIdJasa() {
+        return idJasa;
+    }
+
+    public void setIdJasa(int idJasa) {
+        this.idJasa = idJasa;
+    }
+
     public String getDeskripsiCucian() {
         return deskripsiCucian;
     }
@@ -49,10 +61,6 @@ public class Transaksi {
 
     public int getTotalBayar() {
         return totalBayar;
-    }
-
-    public void setIdTransaksi(int idTransaksi) {
-        this.idTransaksi = idTransaksi;
     }
 
     public void setDeskripsiCucian(String deskripsiCucian) {

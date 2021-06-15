@@ -32,7 +32,7 @@ public class ControllerTransaksi extends AbstractTableModel{
             case 1:
                 return list.get(rowIndex).getDeskripsiCucian();
             case 2:
-                return list.get(rowIndex).getBeratCucian()+" kg";
+                return list.get(rowIndex).getBeratCucian();
             case 3:
                 return list.get(rowIndex).getOngkir();
             case 4:
