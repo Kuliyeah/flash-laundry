@@ -185,6 +185,11 @@ public class InputTransaksi extends javax.swing.JFrame {
         });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -422,6 +427,26 @@ public class InputTransaksi extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        String deskripsi = taDeskripsi.getText();
+        int app;
+        if ((app = JOptionPane.showConfirmDialog(null, "Anda yakin akan menghapus data "
+                + deskripsi+ " ?", "Perhatian", JOptionPane.YES_NO_OPTION)) == 0){
+            try {
+                String sql = "DELETE FROM transaksi WHERE"
+                + " idTransaksi = '" + tfIDTransaksi.getText()+ "'";
+                conn.query(sql);
+                tampilData();
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+                clearText();
+                SetEditOff();
+                btnNew.setEnabled(true);
+            }catch (Exception ex) {
+                System.err.print(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
