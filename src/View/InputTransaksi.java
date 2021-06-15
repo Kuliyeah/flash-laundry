@@ -187,6 +187,11 @@ public class InputTransaksi extends javax.swing.JFrame {
         });
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -354,6 +359,11 @@ public class InputTransaksi extends javax.swing.JFrame {
         btnCancel.setEnabled(true);
         btnNew.setEnabled(false);
     }//GEN-LAST:event_tabelTransaksiMouseClicked
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        clearText();
+        SetEditOff();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
