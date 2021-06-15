@@ -8,10 +8,13 @@ package View;
 import Config.Conn;
 import Models.Transaksi;
 import Controller.ControllerTransaksi;
+import java.awt.HeadlessException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -20,6 +23,7 @@ import javax.swing.*;
  */
 public class InputTransaksi extends javax.swing.JFrame {
     private Object tabel;
+    ResultSet rs;
     private Conn conn;
     private ControllerTransaksi tabelDataTransaksi ;
     /**
@@ -148,7 +152,6 @@ public class InputTransaksi extends javax.swing.JFrame {
         ongkir1 = new javax.swing.JLabel();
         tfIDTransaksi = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(506, 500));
 
         judulTransaksi.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -259,7 +262,7 @@ public class InputTransaksi extends javax.swing.JFrame {
                                     .addComponent(jComboBoxNamaJasa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfBerat, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                     .addComponent(tfOngkir)
-                                    .addComponent(tfIDTransaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+                                    .addComponent(tfIDTransaksi, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -296,8 +299,8 @@ public class InputTransaksi extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(judulTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfIDTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(tfIDTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -336,18 +339,31 @@ public class InputTransaksi extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String berat = tfBerat.getText();
-        String ongkir = tfOngkir.getText();
+    public int hitungTotal() throws SQLException {
+        String Sberat = tfBerat.getText();
+        String Songkir = tfOngkir.getText();
         String deskripsi = taDeskripsi.getText();
-        String total = tfTotal.getText();
-        if ((berat.isEmpty()) | (ongkir.isEmpty()) | (deskripsi.isEmpty()) 
-                | (total.isEmpty())){
+        
+        String sql = "SELECT harga FROM jasa WHERE idJasa='" + jComboBoxNamaJasa.getSelectedItem() +"';";
+        rs = conn.getData(sql);
+        int Stotal = Integer.parseInt(Sberat) * Integer.parseInt(rs.getString(4)) + Integer.parseInt(Songkir);
+        return Stotal;
+    }
+    
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        String Sberat = tfBerat.getText();
+        String Songkir = tfOngkir.getText();
+        String deskripsi = taDeskripsi.getText();
+        
+        if ((Sberat.isEmpty()) | (Songkir.isEmpty()) | (deskripsi.isEmpty())){
             JOptionPane.showMessageDialog(null, "data tidak boleh kosong, " +
                 "silahkan dilengkapi");
             tfBerat.requestFocus();
         }else {
             try {
+                String Stotal = String.valueOf(hitungTotal());
+                tfTotal.setText(Stotal);
+        
                 String sql = "INSERT INTO transaksi (idJasa, deskripsiTransaksi, "
                         + "berat, ongkir, totalBayar, tgl_transaksi) "
                         + "VALUES ("
@@ -363,7 +379,7 @@ public class InputTransaksi extends javax.swing.JFrame {
                 clearText();
                 SetEditOff();
                 btnNew.setEnabled(true);
-            }catch (Exception ex) {
+            }catch (HeadlessException | NumberFormatException | SQLException ex) {
                 System.err.println(ex.getMessage());
             }
         }

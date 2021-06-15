@@ -133,7 +133,6 @@ public class Registrasi extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         textPassword = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1149, 590));
         setResizable(false);

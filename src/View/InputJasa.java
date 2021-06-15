@@ -73,7 +73,6 @@ public class InputJasa extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(471, 500));
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
