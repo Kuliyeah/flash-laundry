@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import Config.Conn;
 import Controller.ControllerJasa;
 import Models.Jasa;
+import Models.Pengguna;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -96,6 +97,11 @@ public class InputJasa extends javax.swing.JFrame {
         taDeskripsiPaket.setRows(5);
         jScrollPane1.setViewportView(taDeskripsiPaket);
 
+        tabelJasa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelJasaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelJasa);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
@@ -241,9 +247,9 @@ public class InputJasa extends javax.swing.JFrame {
             ResultSet rs = conn.getData(sql);
             while (rs.next()) {
                 Jasa jasa = new Jasa();
-                jasa.setNamaJasa(rs.getString(1));
-                jasa.setDeskripsiJasa(rs.getString(2));
-                jasa.setHarga(rs.getString(3));
+                jasa.setNamaJasa(rs.getString(2));
+                jasa.setDeskripsiJasa(rs.getString(3));
+                jasa.setHarga(rs.getString(4));
                 tabelDataJasa.add(jasa);
             }
         } catch (SQLException ex) {
@@ -266,6 +272,18 @@ public class InputJasa extends javax.swing.JFrame {
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
         btnNew.setEnabled(true);
+    }
+    
+    public void TampilText(){
+        int row = 0;
+        row = tabelJasa.getSelectedRow();
+        Jasa jasa = tabelDataJasa.get(row);
+        tfNamaPaket.setText(jasa.getNamaJasa());
+        taDeskripsiPaket.setText(jasa.getDeskripsiJasa());
+        tfHarga.setText(jasa.getHarga());
+        btnSave.setEnabled(false);
+        btnNew.setEnabled(false);
+        SetEditOn();
     }
     
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -362,6 +380,14 @@ public class InputJasa extends javax.swing.JFrame {
         clearText();
         SetEditOff();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void tabelJasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelJasaMouseClicked
+        if(evt.getClickCount()==1){
+            TampilText();
+        }
+        btnCancel.setEnabled(true);
+        btnNew.setEnabled(false);
+    }//GEN-LAST:event_tabelJasaMouseClicked
 
     /**
      * @param args the command line arguments
