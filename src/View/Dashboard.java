@@ -120,17 +120,17 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lato", 1, 30)); // NOI18N
         jLabel3.setText("Login");
         dialogLogin.getContentPane().add(jLabel3);
-        jLabel3.setBounds(160, 50, 82, 37);
+        jLabel3.setBounds(160, 50, 80, 39);
 
         jLabel4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel4.setText("Username");
         dialogLogin.getContentPane().add(jLabel4);
-        jLabel4.setBounds(70, 120, 63, 17);
+        jLabel4.setBounds(70, 120, 64, 19);
 
         jLabel5.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel5.setText("Password");
         dialogLogin.getContentPane().add(jLabel5);
-        jLabel5.setBounds(70, 190, 61, 17);
+        jLabel5.setBounds(70, 190, 61, 19);
 
         textUsername.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         textUsername.setText("lovanto");
@@ -140,7 +140,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnBatal.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         btnBatal.setText("Batal");
         dialogLogin.getContentPane().add(btnBatal);
-        btnBatal.setBounds(270, 290, 67, 25);
+        btnBatal.setBounds(270, 290, 67, 27);
 
         btnLogin.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         btnLogin.setText("Login");
@@ -150,7 +150,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         dialogLogin.getContentPane().add(btnLogin);
-        btnLogin.setBounds(70, 290, 160, 25);
+        btnLogin.setBounds(70, 290, 160, 27);
 
         textPassword.setText("Inzanami123");
         dialogLogin.getContentPane().add(textPassword);
@@ -159,7 +159,7 @@ public class Dashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flash Laundry Apps");
         setBackground(java.awt.Color.black);
-        setMinimumSize(new java.awt.Dimension(546, 252));
+        setMinimumSize(new java.awt.Dimension(556, 222));
         setResizable(false);
         setSize(new java.awt.Dimension(546, 252));
         getContentPane().setLayout(null);

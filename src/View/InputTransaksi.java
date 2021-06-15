@@ -39,7 +39,8 @@ public class InputTransaksi extends javax.swing.JFrame {
     public void SetEditOn(){
         jComboBoxNamaJasa.setEnabled(true);
         tfOngkir.setEnabled(true);
-        tfTotal.setEnabled(true);
+        tfBerat.setEnabled(true);
+        tfTotal.setEnabled(false);
         taDeskripsi.setEnabled(true);
         btnCancel.setEnabled(false);
         btnDelete.setEnabled(true);
@@ -48,9 +49,10 @@ public class InputTransaksi extends javax.swing.JFrame {
         btnNew.setEnabled(true);
     }
     
-    public void SetEditOff() {
+    private void SetEditOff() {
         jComboBoxNamaJasa.setEnabled(false);
         tfOngkir.setEnabled(false);
+        tfBerat.setEnabled(false);
         tfTotal.setEnabled(false);
         taDeskripsi.setEnabled(false);
         btnCancel.setEnabled(false);
@@ -60,7 +62,7 @@ public class InputTransaksi extends javax.swing.JFrame {
         btnNew.setEnabled(true);
     }
     
-     public void tampilData() {
+     private void tampilData() {
         try {
             int baris = tabelTransaksi.getRowCount();
             for (int i = 0; i < baris; i++) {
@@ -90,7 +92,7 @@ public class InputTransaksi extends javax.swing.JFrame {
         taDeskripsi.setText("");
     }
     
-    public void getListJasa(){
+    private void getListJasa(){
         try {
             String SQL = "SELECT * FROM jasa";
             ResultSet res = conn.getData(SQL);
@@ -387,6 +389,7 @@ public class InputTransaksi extends javax.swing.JFrame {
         if(evt.getClickCount()==1){
             TampilText();
         }
+        tfTotal.setEnabled(false);
         tfIDTransaksi.setEnabled(false);
         btnCancel.setEnabled(true);
         btnNew.setEnabled(false);
