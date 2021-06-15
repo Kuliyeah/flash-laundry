@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 03:22 PM
+-- Generation Time: Jun 15, 2021 at 02:24 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -32,6 +32,14 @@ CREATE TABLE `jasa` (
   `deskripsiJasa` text NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jasa`
+--
+
+INSERT INTO `jasa` (`idJasa`, `namaJasa`, `deskripsiJasa`, `harga`) VALUES
+(1, 'printer', 'da waw daw wad wad aw 1', 100001),
+(5, 'printer1', 'da waw daw wad wad aw 11', 1000011);
 
 -- --------------------------------------------------------
 
@@ -64,13 +72,19 @@ INSERT INTO `pengguna` (`username`, `noHP`, `alamatPengguna`, `email`, `kataSand
 CREATE TABLE `transaksi` (
   `idTransaksi` int(11) NOT NULL,
   `idJasa` int(11) NOT NULL,
-  `idPengguna` int(11) NOT NULL,
   `deskripsiTransaksi` text NOT NULL,
   `berat` int(11) NOT NULL,
   `ongkir` int(11) NOT NULL,
-  `bayar` int(11) NOT NULL,
-  `kembalian` int(11) NOT NULL
+  `totalBayar` varchar(11) NOT NULL,
+  `tgl_transaksi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`idTransaksi`, `idJasa`, `deskripsiTransaksi`, `berat`, `ongkir`, `totalBayar`, `tgl_transaksi`) VALUES
+(1, 1, 'jyuu', 4, 5, '7', '2021-06-15');
 
 --
 -- Indexes for dumped tables
@@ -102,12 +116,12 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `jasa`
 --
 ALTER TABLE `jasa`
-  MODIFY `idJasa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idJasa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `idTransaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
