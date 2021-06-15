@@ -22,7 +22,7 @@ public class ControllerTransaksi extends AbstractTableModel{
     }
     
     public int getColumnCount() {
-        return 4;
+        return 6;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -32,7 +32,7 @@ public class ControllerTransaksi extends AbstractTableModel{
             case 1:
                 return list.get(rowIndex).getDeskripsiCucian();
             case 2:
-                return list.get(rowIndex).getBeratCucian();
+                return list.get(rowIndex).getBeratCucian()+" kg";
             case 3:
                 return list.get(rowIndex).getOngkir();
             case 4:
@@ -51,9 +51,9 @@ public class ControllerTransaksi extends AbstractTableModel{
             case 1:
                 return "Deskripsi";
             case 2:
-                return "Ongkir";
-            case 3:
                 return "Berat";
+            case 3:
+                return "Ongkir";
             case 4:
                 return "Total Bayar";
             case 5:

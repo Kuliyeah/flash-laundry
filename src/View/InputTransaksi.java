@@ -7,9 +7,7 @@ package View;
 
 import Config.Conn;
 import Models.Transaksi;
-import Controller.ControllerJasa;
 import Controller.ControllerTransaksi;
-import Models.Jasa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -66,16 +64,16 @@ public class InputTransaksi extends javax.swing.JFrame {
             for (int i = 0; i < baris; i++) {
                 tabelDataTransaksi.delete(0, baris);
             }
-            String sql = "SELECT * FROM jasa";
+            String sql = "SELECT * FROM transaksi";
             ResultSet rs = conn.getData(sql);
             while (rs.next()) {
                 Transaksi trans = new Transaksi();
                 trans.setIdTransaksi(Integer.parseInt(rs.getString(1)));
-                trans.setDeskripsiCucian(rs.getString(2));
-                trans.setBeratCucian(Integer.parseInt(rs.getString(3)));
-                trans.setOngkir(Integer.parseInt(rs.getString(2)));
-                trans.setTotalBayar(Integer.parseInt(rs.getString(3)));
-                trans.setTglTransaksi(LocalDate.now().toString());
+                trans.setDeskripsiCucian(rs.getString(3));
+                trans.setBeratCucian(Integer.parseInt(rs.getString(4)));
+                trans.setOngkir(Integer.parseInt(rs.getString(5)));
+                trans.setTotalBayar(Integer.parseInt(rs.getString(6)));
+                trans.setTglTransaksi(rs.getString(7));
                 tabelDataTransaksi.add(trans);
             }
         } catch (SQLException ex) {
