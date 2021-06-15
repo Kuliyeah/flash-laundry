@@ -23,7 +23,6 @@ import javax.swing.*;
  */
 public class InputTransaksi extends javax.swing.JFrame {
     private Object tabel;
-    ResultSet rs;
     private Conn conn;
     private ControllerTransaksi tabelDataTransaksi ;
     /**
@@ -151,6 +150,7 @@ public class InputTransaksi extends javax.swing.JFrame {
         taDeskripsi = new javax.swing.JTextArea();
         ongkir1 = new javax.swing.JLabel();
         tfIDTransaksi = new javax.swing.JTextField();
+        btnHitung = new javax.swing.JButton();
 
         setSize(new java.awt.Dimension(506, 500));
 
@@ -228,12 +228,6 @@ public class InputTransaksi extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelTransaksi);
 
-        tfTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTotalActionPerformed(evt);
-            }
-        });
-
         taDeskripsi.setColumns(20);
         taDeskripsi.setRows(5);
         jScrollPane1.setViewportView(taDeskripsi);
@@ -241,6 +235,13 @@ public class InputTransaksi extends javax.swing.JFrame {
         ongkir1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ongkir1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ongkir1.setText("DESKRIPSI");
+
+        btnHitung.setText("Hitung");
+        btnHitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,16 +265,6 @@ public class InputTransaksi extends javax.swing.JFrame {
                                     .addComponent(tfOngkir)
                                     .addComponent(tfIDTransaksi, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(total)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ongkir1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(2, 2, 2)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(30, 30, 30)
@@ -283,7 +274,22 @@ public class InputTransaksi extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(ongkir1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(total)
+                                            .addGap(57, 57, 57)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btnHitung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(2, 2, 2)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(judulTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -316,12 +322,14 @@ public class InputTransaksi extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(tfOngkir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(total)
-                            .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(total)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnHitung)))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                             .addComponent(ongkir1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -339,21 +347,29 @@ public class InputTransaksi extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public int hitungTotal() throws SQLException {
+    public int hitungTotal(){
         String Sberat = tfBerat.getText();
         String Songkir = tfOngkir.getText();
         String deskripsi = taDeskripsi.getText();
         
-        String sql = "SELECT harga FROM jasa WHERE idJasa='" + jComboBoxNamaJasa.getSelectedItem() +"';";
-        rs = conn.getData(sql);
-        int Stotal = Integer.parseInt(Sberat) * Integer.parseInt(rs.getString(4)) + Integer.parseInt(Songkir);
-        return Stotal;
+        try {
+            String SQL = "SELECT harga FROM jasa WHERE idJasa = '" + jComboBoxNamaJasa.getSelectedItem() +"'";
+            ResultSet res = conn.getData(SQL);
+            while(res.next()){
+                int Stotal = Integer.parseInt(Sberat) * Integer.parseInt(res.getString(1)) + Integer.parseInt(Songkir);
+                return Stotal;
+            }
+        } catch (SQLException ex) {
+            System.err.print(ex);
+        }
+        return 0;
     }
     
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         String Sberat = tfBerat.getText();
         String Songkir = tfOngkir.getText();
         String deskripsi = taDeskripsi.getText();
+        String total = tfTotal.getText();
         
         if ((Sberat.isEmpty()) | (Songkir.isEmpty()) | (deskripsi.isEmpty())){
             JOptionPane.showMessageDialog(null, "data tidak boleh kosong, " +
@@ -361,16 +377,13 @@ public class InputTransaksi extends javax.swing.JFrame {
             tfBerat.requestFocus();
         }else {
             try {
-                String Stotal = String.valueOf(hitungTotal());
-                tfTotal.setText(Stotal);
-        
                 String sql = "INSERT INTO transaksi (idJasa, deskripsiTransaksi, "
                         + "berat, ongkir, totalBayar, tgl_transaksi) "
                         + "VALUES ("
                         + "'" + jComboBoxNamaJasa.getSelectedItem() + "',"
                         + "'" + deskripsi + "',"
-                        + "'" + berat + "',"
-                        + "'" + ongkir + "',"
+                        + "'" + Sberat + "',"
+                        + "'" + Songkir + "',"
                         + "'" + total + "',"
                         + "'" + LocalDate.now() + "'" + ")";
                 conn.query(sql);
@@ -379,15 +392,11 @@ public class InputTransaksi extends javax.swing.JFrame {
                 clearText();
                 SetEditOff();
                 btnNew.setEnabled(true);
-            }catch (HeadlessException | NumberFormatException | SQLException ex) {
+            }catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void tfTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTotalActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
@@ -468,6 +477,11 @@ public class InputTransaksi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungActionPerformed
+        String Stotal = String.valueOf(hitungTotal());
+        tfTotal.setText(Stotal);
+    }//GEN-LAST:event_btnHitungActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -514,6 +528,7 @@ public class InputTransaksi extends javax.swing.JFrame {
     private javax.swing.JLabel berat;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnHitung;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
