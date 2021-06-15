@@ -24,10 +24,9 @@ public class Dashboard extends javax.swing.JFrame {
     private void setMenuLogout() {
         menuLogin.setEnabled(true);
         menuExit.setEnabled(true);
-        menuBayar.setEnabled(false);
+        menuTransaksi.setEnabled(false);
         menuJasa.setEnabled(false);
         menuLogout.setEnabled(false);
-        menuPesan.setEnabled(false);
         menuPengguna.setEnabled(false);
     }
     
@@ -38,10 +37,9 @@ public class Dashboard extends javax.swing.JFrame {
     private void setMenuLogin() {
         menuLogin.setEnabled(false);
         menuExit.setEnabled(true);
-        menuBayar.setEnabled(true);
+        menuTransaksi.setEnabled(true);
         menuJasa.setEnabled(true);
         menuLogout.setEnabled(true);
-        menuPesan.setEnabled(true);
         menuPengguna.setEnabled(true);
     }
     
@@ -110,8 +108,7 @@ public class Dashboard extends javax.swing.JFrame {
         menuMenu = new javax.swing.JMenu();
         menuPengguna = new javax.swing.JMenuItem();
         menuJasa = new javax.swing.JMenuItem();
-        menuPesan = new javax.swing.JMenuItem();
-        menuBayar = new javax.swing.JMenuItem();
+        menuTransaksi = new javax.swing.JMenuItem();
         menuExit = new javax.swing.JMenu();
 
         dialogLogin.setTitle("Login | Flash Laundry");
@@ -215,23 +212,14 @@ public class Dashboard extends javax.swing.JFrame {
         });
         menuMenu.add(menuJasa);
 
-        menuPesan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        menuPesan.setText("Pesan");
-        menuPesan.addActionListener(new java.awt.event.ActionListener() {
+        menuTransaksi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        menuTransaksi.setText("Transaksi");
+        menuTransaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPesanActionPerformed(evt);
+                menuTransaksiActionPerformed(evt);
             }
         });
-        menuMenu.add(menuPesan);
-
-        menuBayar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        menuBayar.setText("Bayar");
-        menuBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBayarActionPerformed(evt);
-            }
-        });
-        menuMenu.add(menuBayar);
+        menuMenu.add(menuTransaksi);
 
         jMenuBar1.add(menuMenu);
 
@@ -275,13 +263,9 @@ public class Dashboard extends javax.swing.JFrame {
         new InputJasa().show();
     }//GEN-LAST:event_menuJasaActionPerformed
 
-    private void menuBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBayarActionPerformed
+    private void menuTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTransaksiActionPerformed
         new InputTransaksi().show();
-    }//GEN-LAST:event_menuBayarActionPerformed
-
-    private void menuPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesanActionPerformed
-        new InputTransaksi().show();
-    }//GEN-LAST:event_menuPesanActionPerformed
+    }//GEN-LAST:event_menuTransaksiActionPerformed
 
     private void menuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuExitMouseClicked
         System.exit(0);
@@ -311,14 +295,13 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuAuth;
-    private javax.swing.JMenuItem menuBayar;
     private javax.swing.JMenu menuExit;
     private javax.swing.JMenuItem menuJasa;
     private javax.swing.JMenuItem menuLogin;
     private javax.swing.JMenuItem menuLogout;
     private javax.swing.JMenu menuMenu;
     private javax.swing.JMenuItem menuPengguna;
-    private javax.swing.JMenuItem menuPesan;
+    private javax.swing.JMenuItem menuTransaksi;
     private javax.swing.JPasswordField textPassword;
     private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
