@@ -324,6 +324,7 @@ public class Registrasi extends javax.swing.JFrame {
             TampilText();
         }
         btnCancel.setEnabled(true);
+        btnNew.setEnabled(false);
         textUsername.setEnabled(false);
     }//GEN-LAST:event_tablePenggunaMouseClicked
 
