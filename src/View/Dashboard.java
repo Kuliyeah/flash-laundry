@@ -101,6 +101,9 @@ public class Dashboard extends javax.swing.JFrame {
         textPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAuth = new javax.swing.JMenu();
         menuLogin = new javax.swing.JMenuItem();
@@ -166,9 +169,24 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(120, 190, 0, 0);
 
-        jLabel1.setText("Selamat Datang di Flash Laundry...");
+        jLabel1.setText("Selamat Datang Kembali...");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(340, 180, 240, 14);
+        jLabel1.setBounds(420, 180, 240, 14);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("FLASH LAUNDRY");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(230, 90, 100, 15);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Asset 1 (1) (1).png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(240, 30, 70, 50);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/download-removebg-preview (1).png"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(260, 130, 40, 30);
 
         menuAuth.setText("Auth");
 
@@ -293,6 +311,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuAuth;
     private javax.swing.JMenu menuExit;
