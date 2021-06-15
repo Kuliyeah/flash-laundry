@@ -8,8 +8,10 @@ package View;
 import Config.Conn;
 import Models.Transaksi;
 import Controller.ControllerTransaksi;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.*;
 
 /**
@@ -325,13 +327,35 @@ public class InputTransaksi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        if(tfBerat.getText().isEmpty() || tfBerat.getText().equals("0")){
-            JOptionPane.showMessageDialog(null, "Berat masih kosong.",
-                "Alert", JOptionPane.ERROR_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(null, "Tambah Transaksi Sukses ",
-                "Success", JOptionPane.INFORMATION_MESSAGE);
+        String berat = tfBerat.getText();
+        String ongkir = tfOngkir.getText();
+        String deskripsi = taDeskripsi.getText();
+        String total = tfTotal.getText();
+        if ((berat.isEmpty()) | (ongkir.isEmpty()) | (deskripsi.isEmpty()) 
+                | (total.isEmpty())){
+            JOptionPane.showMessageDialog(null, "data tidak boleh kosong, " +
+                "silahkan dilengkapi");
+            tfBerat.requestFocus();
+        }else {
+            try {
+                String sql = "INSERT INTO transaksi (idJasa, deskripsiTransaksi, "
+                        + "berat, ongkir, totalBayar, tgl_transaksi) "
+                        + "VALUES ("
+                        + "'" + jComboBoxNamaJasa.getSelectedItem() + "',"
+                        + "'" + deskripsi + "',"
+                        + "'" + berat + "',"
+                        + "'" + ongkir + "',"
+                        + "'" + total + "',"
+                        + "'" + LocalDate.now() + "'" + ")";
+                conn.query(sql);
+                tampilData();
+                JOptionPane.showMessageDialog(null, deskripsi + " Berhasil Disimpan");
+                clearText();
+                SetEditOff();
+                btnNew.setEnabled(true);
+            }catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
