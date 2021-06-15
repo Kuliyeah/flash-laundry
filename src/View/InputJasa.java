@@ -361,8 +361,8 @@ public class InputJasa extends javax.swing.JFrame {
         if ((app = JOptionPane.showConfirmDialog(null, "Anda yakin akan menghapus data "
                 + namaPaket+ " ?", "Perhatian", JOptionPane.YES_NO_OPTION)) == 0){
             try {
-                String sql = "DELETE FROM pengguna WHERE"
-                + " username = '" + namaPaket+ "'";
+                String sql = "DELETE FROM jasa WHERE"
+                + " namaJasa = '" + namaPaket+ "'";
                 conn.query(sql);
                 tampilData();
                 JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
